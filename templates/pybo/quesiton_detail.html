@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-{% block content%}
+{% block content %}
   <h2 class="border-bottom py-2">{{question.subject}}</h2>
   
   <div class="card my-3">
@@ -21,14 +21,14 @@
       </div>
     </div>
   </div>
-  {%endfor%}
+  {% endfor %}
   <form action="{% url 'pybo:answer_create' question.id%}" method="post" class="my-3">
-    {%csrf_token%}
+    {% csrf_token %}
     {% include 'error/form_error.html' %}
     <div class="form-group">
       <textarea name="content" id="content" class="form-control" rows="10"></textarea>
     </div>
-    <button type="submit" class="btn btn-dark "><i class="fas fa-hand-point-up mr-3"></i>Submit</button><a href="{%url 'pybo:index'%}" class="btn btn-dark mx-3"><i class="fas fa-list"></i>List</a>
+    <button type="submit" class="btn btn-dark "><i class="fas fa-hand-point-up mr-3"></i>Submit</button><a href="{% url 'pybo:index'%}" class="btn btn-dark mx-3"><i class="fas fa-list"></i>List</a>
   </form>
 </div>
 </div>
