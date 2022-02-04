@@ -1,12 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>pybo</title>
-    
+
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -15,31 +15,21 @@
     />
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-    <style>
-      .jumbotron {
-        background-image: url("https://source.unsplash.com/random");
-        height: 150px;
-        color: white;
-        border-radius: 0;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
       <div class="jumbotron mb-0 rounded-0">
         <h1>Pybo를 통한 Django 학습</h1>
         <p>Django와 Bootstrap을 이용한 사이트 구축 학습</p>
-        </div>
-        {% include 'navbar.html' %}
-      <div class="my-3">
-      {%block content%}{%endblock%}
+      </div>
+      {% include 'navbar.html' %}
+      <div class="my-3">{% block content %}{% endblock %}</div>
+      <footer class="mt-5 p-3 bg-light">Copyright © created by xxxx. All right Reserved</footer>
     </div>
-    <footer class="mt-5 p-3 be-light">
-        Copyright Created by xxxx.All right Reserved
-    </footer>
-  <!--jQuery-->
-  <script src="{% static 'jquery-3. 6. 0.min.js' %}"></script>
-  <!--Bootstrap JS-->
-  <script src="{% static 'bootstrap.min.js' %}"></script>
+
+    <!-- jQuery JS -->
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap.min.js' %}"></script>
   </body>
 </html>
