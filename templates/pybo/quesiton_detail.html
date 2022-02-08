@@ -25,17 +25,22 @@
         <div><i class="fas fa-clock"></i> {{ answer.create_date }}</div>
       </div>
     </div>
+    [%if request.user == question.author %]
+    <div class="my-3">
+      <a href="{ url 'pybo:question_modify' question.id %}" class="btn btn-sm btn-outline-secondart">수정</a>
+    </div>
+    {% endif %}
   </div>
+  {% endfor %}
+
+  <form action="{% url 'pybo:answer_create' question.id %}" method="post" class="my-3">
+    {% csrf_token %} {% include 'error/form_error.html' %}
+    <div class="form-group">
+      <textarea {% if not user.is_authenticated %}disabled{% endif %} name="content" id="content" class="form-control" rows="10"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-share-square"></i> 답변 등록</button>
+    <a href="{% url 'pybo:index' %}" class="btn btn-primary"><i class="fas fa-list"></i> 목록 보기</a>
+  </form>
+
+  {% endblock content %}
 </div>
-{% endfor %}
-
-<form action="{% url 'pybo:answer_create' question.id %}" method="post" class="my-3">
-  {% csrf_token %} {% include 'error/form_error.html' %}
-  <div class="form-group">
-    <textarea {% if not user.is_authenticated %}disabled{% endif %} name="content" id="content" class="form-control" rows="10"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary"><i class="fas fa-share-square"></i> 답변 등록</button>
-  <a href="{% url 'pybo:index' %}" class="btn btn-primary"><i class="fas fa-list"></i> 목록 보기</a>
-</form>
-
-{% endblock content %}
